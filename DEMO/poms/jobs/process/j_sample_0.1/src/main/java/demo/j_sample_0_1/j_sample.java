@@ -278,6 +278,16 @@ public class j_sample implements TalendJob {
 		tJava_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tLogRow_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tJava_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void talendJobLog_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -304,6 +314,107 @@ public class j_sample implements TalendJob {
 
 	}
 
+	public static class row1Struct implements routines.system.IPersistableRow<row1Struct> {
+		final static byte[] commonByteArrayLock_DEMO_j_sample = new byte[0];
+		static byte[] commonByteArray_DEMO_j_sample = new byte[0];
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_DEMO_j_sample) {
+
+				try {
+
+					int length = 0;
+
+				}
+
+				finally {
+				}
+
+			}
+
+		}
+
+		public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+			synchronized (commonByteArrayLock_DEMO_j_sample) {
+
+				try {
+
+					int length = 0;
+
+				}
+
+				finally {
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+			}
+
+			finally {
+			}
+
+		}
+
+		public void writeData(org.jboss.marshalling.Marshaller dos) {
+			try {
+
+			}
+
+			finally {
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row1Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
 	public void tJava_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
 		globalMap.put("tJava_1_SUBPROCESS_STATE", 0);
 
@@ -323,6 +434,39 @@ public class j_sample implements TalendJob {
 			}
 			if (resumeIt || globalResumeTicket) { // start the resume
 				globalResumeTicket = true;
+
+				row1Struct row1 = new row1Struct();
+
+				/**
+				 * [tLogRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_1", false);
+				start_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				currentComponent = "tLogRow_1";
+
+				runStat.updateStatAndLog(execStat, enableLogStash, resourceMap, iterateId, 0, 0, "row1");
+
+				int tos_count_tLogRow_1 = 0;
+
+				if (enableLogStash) {
+					talendJobLog.addCM("tLogRow_1", "tLogRow_1", "tLogRow");
+					talendJobLogProcess(globalMap);
+				}
+
+				///////////////////////
+
+				final String OUTPUT_FIELD_SEPARATOR_tLogRow_1 = "|";
+				java.io.PrintStream consoleOut_tLogRow_1 = null;
+
+				StringBuilder strBuffer_tLogRow_1 = null;
+				int nb_line_tLogRow_1 = 0;
+///////////////////////    			
+
+				/**
+				 * [tLogRow_1 begin ] stop
+				 */
 
 				/**
 				 * [tJava_1 begin ] start
@@ -369,6 +513,65 @@ public class j_sample implements TalendJob {
 				 */
 
 				/**
+				 * [tLogRow_1 main ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				if (runStat.update(execStat, enableLogStash, iterateId, 1, 1
+
+						, "row1", "tJava_1", "tJava_1", "tJava", "tLogRow_1", "tLogRow_1", "tLogRow"
+
+				)) {
+					talendJobLogProcess(globalMap);
+				}
+
+///////////////////////		
+
+				strBuffer_tLogRow_1 = new StringBuilder();
+
+				if (globalMap.get("tLogRow_CONSOLE") != null) {
+					consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
+				} else {
+					consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
+					globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
+				}
+				consoleOut_tLogRow_1.println(strBuffer_tLogRow_1.toString());
+				consoleOut_tLogRow_1.flush();
+				nb_line_tLogRow_1++;
+//////
+
+//////                    
+
+///////////////////////    			
+
+				tos_count_tLogRow_1++;
+
+				/**
+				 * [tLogRow_1 main ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 process_data_begin ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 process_data_begin ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 process_data_end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 process_data_end ] stop
+				 */
+
+				/**
 				 * [tJava_1 process_data_end ] start
 				 */
 
@@ -390,6 +593,31 @@ public class j_sample implements TalendJob {
 				/**
 				 * [tJava_1 end ] stop
 				 */
+
+				/**
+				 * [tLogRow_1 end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+//////
+//////
+				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
+
+///////////////////////    			
+
+				if (runStat.updateStatAndLog(execStat, enableLogStash, resourceMap, iterateId, "row1", 2, 0, "tJava_1",
+						"tJava_1", "tJava", "tLogRow_1", "tLogRow_1", "tLogRow", "output")) {
+					talendJobLogProcess(globalMap);
+				}
+
+				ok_Hash.put("tLogRow_1", true);
+				end_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_1 end ] stop
+				 */
+
 			} // end the resume
 
 		} catch (java.lang.Exception e) {
@@ -415,6 +643,17 @@ public class j_sample implements TalendJob {
 				/**
 				 * [tJava_1 finally ] stop
 				 */
+
+				/**
+				 * [tLogRow_1 finally ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 finally ] stop
+				 */
+
 			} catch (java.lang.Exception e) {
 				// ignore
 			} catch (java.lang.Error error) {
@@ -1006,6 +1245,6 @@ public class j_sample implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 33980 characters generated by Talend Cloud Data Management Platform on the
- * February 16, 2022 at 11:25:00 PM EST
+ * 39511 characters generated by Talend Cloud Data Management Platform on the
+ * February 16, 2022 at 11:25:31 PM EST
  ************************************************************************************************/
